@@ -13,11 +13,11 @@
                     <a :href="`mailto:${senator.email}?subject=${subject}&body=${message}`">{{senator.email}}</a>
                 </p>
 				<p v-if="OS === 'iOS'">Phone: 
-                    <a :href="`sms:${senator.phone}&body=${message}`" v-if="typeof senator.phone !== 'undefined' && senator.phone !== 'No Phone number'">{{senator.phone}}</a>
+                    <a :href="`sms:${codePhone(senator.phone)}&body=${message}`" v-if="typeof senator.phone !== 'undefined' && senator.phone !== 'No Phone number'">{{codePhone(senator.phone)}}</a>
                     <span v-else>No phone number</span>
                 </p>
                 <p v-else>Phone: 
-                    <a :href="`sms:${senator.phone}?body=${message}`" v-if="typeof senator.phone !== 'undefined' && senator.phone !== 'No Phone number'">{{senator.phone}}</a>
+                    <a :href="`sms:${codePhone(senator.phone)}?body=${message}`" v-if="typeof senator.phone !== 'undefined' && senator.phone !== 'No Phone number'">{{codePhone(senator.phone)}}</a>
                     <span v-else>No phone number</span>
                 </p>
             </div>
@@ -61,6 +61,11 @@ export default {
 	},
 	mounted(){
 		console.log(this.message);
+	},
+	methods: {
+		codePhone(phone){
+			return phone.replace("0", "+234");
+		}
 	}
 }
 </script>

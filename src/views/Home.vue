@@ -47,13 +47,10 @@ export default {
   methods:{
     searchSenators(){
       this.results = [...this.senators].filter((val) => {
-        // console.log(val);
         return val.state.toLowerCase().indexOf(this.query.toLowerCase()) !== -1 || val.name.toLowerCase().indexOf(this.query.toLowerCase()) !== -1;
       });
     },
     downloadCSV(data, query) {
-      // console.log(data);
-      
       let csv = 'State,Name,Email,Phone\n';
       data.forEach((senator) => {
         csv += `${senator.state},${senator.name},${senator.email},${senator.phone}\n`;

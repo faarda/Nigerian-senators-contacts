@@ -34,10 +34,10 @@ export default {
     },
     computed: {
         message(){
-            return encodeURI("Dear senator, I am  a concerned citizen of your constituent, and I'll like to express my displeasure with the two bills currently in motion. These bills are attempts to infringe on the basic human right of freedom to speech as Nigerians, and I believe it has far reaching consequences on the future of our dear nation. I urge you, distinguished, to speak and vote against these bills for the sake of the future of Nigeria.I know you are a person of integrity and I trust you'll do the right thing. Thanks Senator!");
+            return encodeURI("Dear senator, I am  a concerned citizen of your constituent, and I'll like to express my displeasure about SARS. The members of this squad who are supposed to protect us against armed robbery are killing, extorting and harassing us everyday. We are scared to move freely and we need your help. I urge you, distinguished, to use your office to protect the lives of Nigerian youth and the future of Nigeria. We are counting on you to do the right thing. We are counting on you to help us #ENDSARS. Thanks Senator!");
         },
         subject(){
-            return "Anti social media bill";
+            return "END SARS";
 		},
 		OS() {
 			var userAgent = navigator.userAgent || navigator.vendor || window.opera;

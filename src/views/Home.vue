@@ -1,10 +1,16 @@
 <template>
   <div class="home">
     <h1>Search for senators contacts by name or state</h1>
-    <div class="search">
-      <input type="text" v-model="query" @input="searchSenators"  placeholder="Enter name or state" class="form-input">
-      <button class="btn">
-        <span data-feather="search"></span>
+
+    <div class="actions">
+      <div class="search">
+        <input type="text" v-model="query" @input="searchSenators"  placeholder="Enter name or state" class="form-input">
+        <button class="btn">
+          <span data-feather="search"></span>
+        </button>
+      </div>
+      <button class="download-csv-btn" @click="downloadCSV(results, query)">
+        Download CSV
       </button>
     </div>
     <div class="senators">
@@ -44,8 +50,22 @@ export default {
         // console.log(val);
         return val.state.toLowerCase().indexOf(this.query.toLowerCase()) !== -1 || val.name.toLowerCase().indexOf(this.query.toLowerCase()) !== -1;
       });
+    },
+    downloadCSV(data, query) {
+      // console.log(data);
+      
+      let csv = 'State,Name,Email,Phone\n';
+      data.forEach((senator) => {
+        csv += `${senator.state},${senator.name},${senator.email},${senator.phone}\n`;
+      });
 
+      let filePrefix = query || 'all';
+      let anchor = document.createElement('a');
 
+      anchor.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+      anchor.target = '_blank';
+      anchor.download = `${filePrefix}-senators.csv`;
+      anchor.click();
     }
   }
 }
@@ -67,7 +87,7 @@ export default {
 
   .search{
     width: 70%;
-    margin: 30px auto;
+    margin: 30px 10px;
     border: solid 1px rgba(0,31, 63, 0.70);
     display: flex;
     align-items: center;
@@ -82,6 +102,7 @@ export default {
     border: 0;
     outline: 0;
     padding: 5px 15px;
+    font-family: 'Lato', sans-serif;
   }
 
   .btn{
@@ -108,6 +129,25 @@ export default {
 
   .btn:hover > .feather{
     color: #f2f2f2;
+  }
+
+  .actions {
+    margin: 60px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: row wrap;
+  }
+
+  .download-csv-btn {
+    height: 50px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #008751;
+    background-color: #008751;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    cursor: pointer;
   }
 
   .senators{
@@ -183,9 +223,19 @@ export default {
       font-size: 22px;
     }
 
+    .actions {
+      display: block;
+    }
+
     .search{
-      width: 90%;
+      width: 100%;
       margin-bottom: 10px;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .download-csv-btn {
+      width: 100%;
     }
 
     .senators{

@@ -5,8 +5,15 @@
          <img src="@/assets/senate.png" alt="">
       </div>
       <div class="github">
-        <a target="_blank" href="https://github.com/faarda/Nigerian-senators-contacts">
+        <!--<a target="_blank" href="https://github.com/faarda/Nigerian-senators-contacts">
           <img src="@/assets/github.png" alt="">
+        </a>-->
+		<a target="_blank" href="mailto:silasadedoyin@gmail.com">
+		  Built By Silas
+        </a>
+		&centerdot;
+		<a target="_blank" href="https://twitter.com/silasadedoyin">
+		  Checkout My Twitter
         </a>
       </div>
     </header>
@@ -37,7 +44,7 @@
 
   .logo{
     display: inline-block;
-    width: 48px;
+    width: 40px;
   }
 
   .logo img{
@@ -46,8 +53,15 @@
 
   .github{
     display: inline-block;
-    width: 30px;
+    /*width: 30px;*/
     cursor: pointer;
+	color: #fff;
+  }
+
+  .github a{
+	  color: #fff;
+	  font-size: 14px;
+	  font-weight: 700;
   }
 
   .github img{

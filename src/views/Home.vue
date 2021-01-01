@@ -9,7 +9,7 @@
           <span data-feather="search"></span>
         </button>
       </div>
-      <button class="download-csv-btn" @click="downloadCSV(results, query)">
+      <button :disabled="results.length === 0" class="download-csv-btn" @click="downloadCSV(results, query)">
         Download CSV
       </button>
     </div>
@@ -145,6 +145,11 @@ export default {
     color: white;
     font-family: 'Lato', sans-serif;
     cursor: pointer;
+  }
+
+  .download-csv-btn:disabled {
+    opacity: .5;
+    cursor: auto;
   }
 
   .senators{
